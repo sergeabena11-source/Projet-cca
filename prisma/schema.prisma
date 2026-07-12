@@ -1,1 +1,21 @@
+// Schéma Prisma — Étape 1 : squelette minimal
+// Le schéma complet (7 objets métier : Proforma, BonCommande, Livraison,
+// Achat, ReglementFournisseur, Facturation, StatutFiscal) sera ajouté à l'Étape 2.
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Modèle temporaire pour valider la connexion à Neon.
+// Sera remplacé/complété à l'Étape 2 par le modèle Utilisateur définitif avec rôles.
+model Ping {
+  id        String   @id @default(cuid())
+  message   String
+  createdAt DateTime @default(now())
+}
